@@ -1,4 +1,4 @@
-![PROJECT_PHOTO](https://github.com/vvip-68/GyverMatrixWiFi/blob/master/proj_img.jpg)
+![PROJECT_PHOTO](https://github.com/vvip-68/GyverStringWiFi/blob/master/proj_img.jpg)
 
 # Бегущая строка с голосовым управлением и связью по WiFi
 * [Описание проекта](#chapter-0)
