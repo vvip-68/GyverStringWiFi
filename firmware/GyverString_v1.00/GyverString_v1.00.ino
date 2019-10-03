@@ -155,7 +155,7 @@ timerMinim ntpSyncTimer(1000 * 60 * SYNC_TIME_PERIOD);  // Таймер синх
 
 // ---- Прочие переменные
 
-int globalBrightness = BRIGHTNESS; // Текущая яркость
+byte globalBrightness = BRIGHTNESS;// Текущая яркость
 byte breathBrightness;             // Яркость эффекта "Дыхание"
 uint32_t globalColor = 0xffffff;   // Цвет рисования при запуске белый
 bool brightDirection = false;      // true - увеличение яркости; false - уменьшение яркости
