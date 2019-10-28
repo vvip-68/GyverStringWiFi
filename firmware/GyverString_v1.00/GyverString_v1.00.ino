@@ -6,6 +6,8 @@
 // Дальнейшее развитие: vvip, 2019
 // https://AlexGyver.ru/
 
+#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2019.1028")
+
 #define FASTLED_INTERRUPT_RETRY_COUNT 0
 #define FASTLED_ALLOW_INTERRUPTS 0
 
@@ -181,7 +183,7 @@ void setup() {
   Serial.begin(115200);
   delay(10);
 
-  Serial.println(F("\n\nWiFi String v.1.00.2019.1025"));
+  Serial.println(FIRMWARE_VER);
 
   // Инициализация EEPROM и загрузка сохраненных параметров
   EEPROM.begin(512);
