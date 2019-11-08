@@ -6,7 +6,7 @@
 // Дальнейшее развитие: vvip, 2019
 // https://AlexGyver.ru/
 
-#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2019.1028")
+#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2019.1108")
 
 #define FASTLED_INTERRUPT_RETRY_COUNT 0
 #define FASTLED_ALLOW_INTERRUPTS 0
