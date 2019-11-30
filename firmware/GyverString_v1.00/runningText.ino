@@ -92,4 +92,5 @@ uint8_t getFont(uint8_t font, uint8_t row) {
   } else if (font >= 96 && font <= 111) {
     return pgm_read_byte(&(fontHEX[font + 47][row]));
   }
+  return 0;
 }

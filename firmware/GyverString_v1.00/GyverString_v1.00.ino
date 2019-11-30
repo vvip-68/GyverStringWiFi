@@ -6,7 +6,7 @@
 // Дальнейшее развитие: vvip, 2019
 // https://AlexGyver.ru/
 
-#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2019.1127")
+#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2019.1130")
 
 // Подключение используемых библиотек
 #include <ESP8266WiFi.h>

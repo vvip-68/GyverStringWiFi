@@ -182,7 +182,7 @@ void parsing() {
 // ****************** ОБРАБОТКА *****************
   String str, str1, str2;
   byte b_tmp;
-  int8_t tmp_eff, idx;
+  int8_t tmp_eff;
 
   /*
     Протокол связи, посылка начинается с режима. Режимы:
@@ -372,7 +372,7 @@ void parsing() {
             // $21 1 IP1 IP2 IP3 IP4 - установить статический IP адрес подключения к локальной WiFi сети, пример: $21 1 192 168 0 106
             // Локальная сеть - 10.х.х.х или 172.16.х.х - 172.31.х.х или 192.168.х.х
             // Если задан адрес не локальной сети - сбросить его в 0.0.0.0, что означает получение динамического адреса 
-            if (!(intData[2] == 10 || intData[2] == 172 && intData[3] >= 16 && intData[3] <= 31 || intData[2] == 192 && intData[3] == 168)) {
+            if (!(intData[2] == 10 || (intData[2] == 172 && intData[3] >= 16 && intData[3] <= 31) || (intData[2] == 192 && intData[3] == 168))) {
               intData[2] = 0;
               intData[3] = 0;
               intData[4] = 0;
@@ -541,7 +541,7 @@ void parsing() {
     }
 
     if (incomingByte == ending) {                   // если таки приняли ; - конец парсинга
-      parseMode == NORMAL;
+      parseMode = NORMAL;
       parseStarted = false;                         // сброс
       recievedFlag = true;                          // флаг на принятие
       bufIdx = 0;
@@ -582,8 +582,7 @@ void sendPageParams(int page) {
   // AM2E:NN     номер эффекта режима 1:   -1 - не используется; 0 - выключить матрицу; 1 - включить бегущую строку
   
   String str = "", color, text;
-  boolean allowed;
-  byte b_tmp;
+
   // page: 1 - настройки; 2 - текст; 3 - эффекты; 4-часы; 5-настройки подключения; 6 - вкл/выкл по времени
   switch (page) { 
     case 1:  // Подключение; Бегущая строка. Вернуть: Ширина/Высота матрицы; Яркость;
@@ -665,7 +664,6 @@ void setCurrentMode(int cMode) {
   isTurnedOff = false;
 
   String str;
-  byte tmp_eff = -1;
 
   switch(cMode) {
     case 0:  // Черный экран (выкл);
