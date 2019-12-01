@@ -247,6 +247,7 @@ void parsing() {
           str = receiveText.substring(tmp_eff+1, receiveText.length()+1);
            switch(b_tmp) {
             case 0:
+              wifi_print_ip = false;
               runningText = str;
               saveRunningText(str);
               break;
@@ -304,11 +305,11 @@ void parsing() {
         break;
       case 15: 
         if (intData[2] == 0) {
-          effectSpeed = intData[1]; 
+          effectSpeed = 255 - intData[1]; 
           saveEffectSpeed(effect, effectSpeed);
           effectTimer.setInterval(effectSpeed);
         } else if (intData[2] == 1) {
-          scrollSpeed = intData[1]; 
+          scrollSpeed = 255 - intData[1]; 
           scrollTimer.setInterval(scrollSpeed);
           saveScrollSpeed(scrollSpeed);
         }
@@ -588,9 +589,9 @@ void sendPageParams(int page) {
     case 1:  // Подключение; Бегущая строка. Вернуть: Ширина/Высота матрицы; Яркость;
       text = runningText;
       text.replace(";","~");
-      str="$18 BR:"+String(globalBrightness) + "|ST:" + String(constrain(map(scrollSpeed, D_TEXT_SPEED_MIN,D_TEXT_SPEED_MAX, 0, 255), 0,255));
+      str="$18 BR:"+String(globalBrightness) + "|ST:" + String(constrain(map(255 - scrollSpeed, D_TEXT_SPEED_MIN,D_TEXT_SPEED_MAX, 0, 255), 0,255));
       str+="|OF:"; if (isTurnedOff)  str+="0"; else str+="1";
-      str+="|EF:"+String(effect+1) + "|SE:" + String(constrain(map(effectSpeed, D_EFFECT_SPEED_MIN,D_EFFECT_SPEED_MAX, 0, 255), 0,255))+"|TS:";
+      str+="|EF:"+String(effect+1) + "|SE:" + String(constrain(map(255 - effectSpeed, D_EFFECT_SPEED_MIN,D_EFFECT_SPEED_MAX, 0, 255), 0,255))+"|TS:";
       if (runningFlag)  str+="1|TX:["; else str+="0|TX:[";
       str += text + "]";
       str+=";";
@@ -688,6 +689,7 @@ void setEffect(byte eff) {
 
 void startRunningText() {
   runningFlag = true;
+  wifi_print_ip = false;
   // Если при включении режима "Бегущая строка" цвет текста - черный -- включить белый, т.к черный на черном не видно
   if (globalColor == 0x000000) setGlobalColor(0xffffff);
   FastLED.setBrightness(globalBrightness);    
