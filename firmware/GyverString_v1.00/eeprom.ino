@@ -88,7 +88,6 @@ void loadSettings() {
     effectSpeed = D_EFFECT_SPEED;
     useNtp = true;
     SYNC_TIME_PERIOD = 60;
-    timeZoneOffset = 7;
     useSoftAP = false;
     globalColor = 0xFFFFFF;
 
