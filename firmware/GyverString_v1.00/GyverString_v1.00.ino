@@ -6,7 +6,7 @@
 // Дальнейшее развитие: vvip, 2019
 // https://AlexGyver.ru/
 
-#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2020.0726")
+#define FIRMWARE_VER F("\n\nGyverString-WiFi v.1.00.2021.0412")
 
 // Подключение используемых библиотек
 #include <ESP8266WiFi.h>
@@ -15,7 +15,6 @@
 #include <EEPROM.h>
 #include "FastLED.h"
 #include "timerMinim.h"
-#include "fonts.h"
 #include "GyverButton.h"
 
 // ************************ МАТРИЦА *************************
@@ -32,8 +31,11 @@
 #define MATRIX_TYPE 0         // тип матрицы: 0 - зигзаг, 1 - параллельная
 #define CONNECTION_ANGLE 3    // угол подключения: 0 - левый нижний, 1 - левый верхний, 2 - правый верхний, 3 - правый нижний
 #define STRIP_DIRECTION 1     // направление ленты из угла: 0 - вправо, 1 - вверх, 2 - влево, 3 - вниз
-// при неправильной настрйоке матрицы вы получите предупреждение "Wrong matrix parameters! Set to default"
-// шпаргалка по настройке матрицы здесь! https://alexgyver.ru/matrix_guide/
+                              // при неправильной настрйоке матрицы вы получите предупреждение "Wrong matrix parameters! Set to default"
+                              // шпаргалка по настройке матрицы здесь! https://alexgyver.ru/matrix_guide/
+
+#define BIG_FONT 2            // 0 - шрифт 5x8, 1 - шрифт  10x16; 2 - шрифт 8x13
+#include "fonts.h"
 
 // ******************* ПОДКЛЮЧЕНИЕ К СЕТИ *******************
 
